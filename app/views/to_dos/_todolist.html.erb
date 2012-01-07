@@ -1,0 +1,8 @@
+<aside>
+<h4>Aktuelle Aufgaben:</h4>
+<ul class="todolist">
+<% @todolist.each do |todo| %>
+    <li><span><%= todo.deadline.to_formatted_s(:date_format) %></span> <%= link_to todo.title, todo %></li>
+<% end %>
+</ul>
+</aside>

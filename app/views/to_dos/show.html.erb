@@ -1,0 +1,52 @@
+<p>
+  <b>title:</b>
+  <%= @to_do.title %>
+</p>
+
+<p>
+  <b>Kurzbeschreibung:</b>
+  <%= @to_do.short_description %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= sanitize @to_do.details, :tags => %w(p br a strong em code) %>
+</p>
+
+<p>
+  <b>Deadline:</b>
+  <%= @to_do.deadline.to_formatted_s(:date_format) %>
+</p>
+
+<p>
+  <b>Zeiterfassung:</b>
+  <%= @to_do.time %>
+</p>
+<p>
+  <b>Priorität:</b> <%=@to_do.priority %>
+</p>
+<p>
+  <b>Erledigt:</b> <%=@to_do.done %>
+</p>
+
+<%= link_to 'Edit', edit_project_to_do_path(@project) %> |
+<%= link_to 'Back', todos_project_path(@project) %> |
+<%= link_to 'Destroy', :to_do, confirm: 'Are you sure?', method: :delete %> 
+
+
+<% content_for :headertitle do %>
+   <%= @project.title %>
+<% end %>
+
+<% content_for :contentmenu do %>
+   <li><%= link_to "Übersicht", project_path(@project) %></li>
+   <li><%= link_to "Aufgaben", todos_project_path(@project) %></li>
+   <li><%= link_to "Zeit", time_project_path(@project) %></li>
+<% end %>
+
+<% content_for :sidebar do %>
+	<%= link_to 'Aufgabe löschen', :to_do, confirm: 'Bist du sicher, dass du diese Aufgabe löschen möchtest?', method: :delete, :class => 'todo-delete', :title => 'Aufgabe löschen' %>
+    <%= link_to 'Aufgabe bearbeiten', edit_project_to_do_path(@project), :class => 'todo-edit', :title => 'Aufgabe bearbeiten' %>
+  </aside>
+  <%= render 'todolist' %>
+<% end %>

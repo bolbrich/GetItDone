@@ -1,0 +1,61 @@
+<%= form_for([@project, @to_do]) do |f| %>
+  <% if @to_do.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@to_do.errors.count, "error") %> prohibited this to_do from being saved:</h2>
+
+      <ul>
+      <% @to_do.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-column">
+  <p>
+    <%= f.label 'Titel' %><br />
+    <%= f.text_field :title %>
+
+  </p>
+  <p>
+    <%= f.label 'Kurzbeschreibung' %><br />
+    <%= f.text_area :short_description, :rows => 4 %>
+  </p>
+</div>
+  
+<div class="form-column">
+  <p class="checkbox">
+    <%= f.label 'Fertig! :)' %><br />
+    <%= f.check_box :done %> Aufgabe ist erledigt!<br />
+	<span>Bitte vergiss nicht die aufgewendete Zeit im Feld "Zeiterfassung" einzutragen!</span>
+  </p>
+  <p>
+    <%= f.label 'Zeiterfassung' %><br />
+    <%= f.text_field :time %><br />
+	
+  </p>
+  <p>
+    <%= f.label 'Deadline' %><br />
+    <%= f.date_select(:deadline, :order => [:day, :month, :year]) %>
+  </p>
+  <p class="radiobutton">
+    <%= f.label 'Priorität' %><br />
+	<%= f.radio_button :priority, 'hoch' %> hoch
+	<%= f.radio_button :priority, 'normal', :checked => true %> normal
+	<%= f.radio_button :priority, 'niedrig' %> niedrig
+  </p>
+</div>
+  <p class="textarea-detail">
+    <%= f.label 'Details' %><br />
+    <%= f.text_area :details %><br />
+	<span>Du kannst folgende HTML Tags verwenden: <code>&lt;p&gt; &lt;br&gt; &lt;strong&gt; &lt;em&gt; &lt;a href=&quot;&quot;&gt; &lt;code&gt;</code></span>
+  </p>
+  <p class="submit">
+    <%= f.submit 'Speichern!' %>
+  </p>
+<% end %>
+
+
+<% content_for :stylesheet do %>
+<%= stylesheet_link_tag "form", :media => "screen" %>
+<% end %>

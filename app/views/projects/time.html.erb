@@ -1,0 +1,35 @@
+<h2 class="site-title">Zeiterfassung</h2>
+<h4 class="site-subtitle"><%= @project.title %></h4>
+
+<% if @project.to_dos.done.empty? %>
+  <p class="info">Es sind noch keine Aufgaben dieses Projektes abgeschlossen. Kennzeichne fertige Aufgaben als "erledigt".</p>
+<% else %>
+  <ul class="todos">
+  <% @project.to_dos.done.each do |to_do| %>
+    <li>
+	  Erledigt am: <%= to_do.updated_at.to_formatted_s(:time_format) %><br />
+	  Titel: <a href="/projects/<%= @project.id %>/to_dos/<%= to_do.id %>"><%= to_do.title %></a><br />
+	  Aufgewendete Zeit: <%= to_do.time %> Stunden
+	</li>
+  <% end %>
+  </ul>
+<% end %>
+
+<p class="actions bottom">&raquo; <%= link_to 'zurück zum Dashboard', projects_path, :class => "back-to-dashboard" %></p>
+<p> </p>
+
+<% content_for :headertitle do %>
+   <%= @project.title %>
+<% end %>
+
+<% content_for :contentmenu do %>
+   <li><%= link_to "Übersicht", project_path%></li>
+   <li><%= link_to "Aufgaben", todos_project_path %></li>
+   <li><%= link_to "Zeit", time_project_path, :class => "active" %></li>
+<% end %>
+
+<% content_for :sidebar do %>
+    <%= link_to 'Neue Aufgabe hinzufügen', new_project_to_do_path(@project), :class => 'todo-add', :title => 'Neue Aufgabe hinzufügen' %>
+  </aside>
+  <%= render 'projectlist' %>
+<% end %>

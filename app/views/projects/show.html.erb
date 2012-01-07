@@ -1,0 +1,33 @@
+<p class="project-description"><%= @project.description %></p>
+
+<% unless @project.to_dos.empty? %>
+<h3 class="project-todo">Aufgaben (<%= @project.to_dos.outstanding.count %>):</h3>
+  <ul class="project-todos">
+  <% @project.to_dos.outstanding.each do |to_do| %>
+    <li>
+	  <a href="/projects/<%= @project.id %>/to_dos/<%= to_do.id %>"><%= to_do.title %></a>
+	  <!-- <%= link_to to_do.title, project_to_do_path(@project) %> -->
+	</li>
+  <% end %>
+  </ul>
+<% end %>
+
+<p class="actions bottom">&raquo; <%= link_to 'zurück zum Dashboard', projects_path, :class => "back-to-dashboard" %></p>
+
+
+<% content_for :headertitle do %>
+   <%= @project.title %>
+<% end %>
+
+<% content_for :contentmenu do %>
+   <li><%= link_to "Übersicht", project_path, :class => "active" %></li>
+   <li><%= link_to "Aufgaben", todos_project_path %></li>
+   <li><%= link_to "Zeit", time_project_path %></li>
+<% end %>
+
+<% content_for :sidebar do %>
+	<%= link_to 'Projekt / LVA löschen', @project, confirm: 'Bist du sicher, dass du dieses Projekt/diese LVA löschen möchtest?', method: :delete, :class => 'project-delete', :title => 'Projekt/LVA löschen' %>
+    <%= link_to 'Projekt / LVA bearbeiten', edit_project_path(@project), :class => 'project-edit', :title => 'Projekt/LVA bearbeiten' %>
+  </aside>
+  <%= render 'projectlist' %>
+<% end %>

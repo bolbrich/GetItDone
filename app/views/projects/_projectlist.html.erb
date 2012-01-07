@@ -1,0 +1,14 @@
+<aside>
+<h4>Aktuelle Projekte:</h4>
+<ul class="worklist">
+<% @worklist.each do |work| %>
+    <li><%= link_to work.title, work %></li>
+<% end %>
+</ul>
+<h4>Aktuelle Lehrveranstaltungen:</h4>
+<ul class="studylist">
+<% @studylist.each do |study| %>
+    <li><%= link_to study.title, study %></li>
+<% end %>
+</ul>
+</aside>

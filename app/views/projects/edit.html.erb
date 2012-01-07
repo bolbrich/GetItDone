@@ -1,0 +1,15 @@
+<h2 class="site-title">Projekt bearbeiten</h2>
+<h4 class="site-subtitle"><%= @project.title %></h4>
+
+<%= render 'form' %>
+
+
+<% content_for :headertitle do %>
+   <%= @project.title %>
+<% end %>
+
+<% content_for :contentmenu do %>
+   <li><%= link_to "Übersicht", project_path %></li>
+   <li><%= link_to "Aufgaben", todos_project_path %></li>
+   <li><%= link_to "Zeit", time_project_path %></li>
+<% end %>

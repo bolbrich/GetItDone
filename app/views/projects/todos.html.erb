@@ -1,0 +1,46 @@
+<h2 class="site-title"><%= @project.to_dos.outstanding.count %> Aufgaben</h2>
+<h4 class="site-subtitle"><%= @project.title %></h4>
+
+<% if @project.to_dos.outstanding.empty? %>
+  <p class="info">Entweder es sind alle Aufgaben dieses Projektes/dieser Lehrveranstaltung erledigt oder es wurden noch keine Aufgaben für dieses Projekt/diese Lehrveranstaltung hinzugefügt!</p>
+  <p class="info">Du kannst eine <%= link_to 'neue Aufgabe hinzufügen', new_project_to_do_path(@project) %> oder dich entspannt zurücklehnen...</p>
+<% else %>
+  <ul class="todos">
+  <% @project.to_dos.outstanding.each do |to_do| %>
+    <li>
+	  <a href="/projects/<%= @project.id %>/to_dos/<%= to_do.id %>"><%= to_do.title %></a><br />
+	  <%= to_do.short_description %> <span>Deadline: <%= to_do.deadline.to_formatted_s(:date_format) %></span>
+	</li>
+  <% end %>
+  </ul>
+<% end %>
+
+<h5>Erledigte Aufgaben:</h5>
+<% if @project.to_dos.done.empty? %>
+  <p class="info">Es gibt noch keine erledigten Aufgaben!</p>
+<% else %>
+<ul class="done">
+  <% @project.to_dos.done.each do |done_to_do| %>
+  <li><strike><%= done_to_do.title %></strike></li>
+  <% end %>
+</ul>
+<% end %>
+
+<p class="actions bottom">&raquo; <%= link_to 'zurück zum Dashboard', projects_path, :class => "back-to-dashboard" %></p>
+<p> </p>
+
+<% content_for :headertitle do %>
+   <%= @project.title %>
+<% end %>
+
+<% content_for :contentmenu do %>
+   <li><%= link_to "Übersicht", project_path%></li>
+   <li><%= link_to "Aufgaben", todos_project_path, :class => "active" %></li>
+   <li><%= link_to "Zeit", time_project_path %></li>
+<% end %>
+
+<% content_for :sidebar do %>
+    <%= link_to 'Neue Aufgabe hinzufügen', new_project_to_do_path(@project), :class => 'todo-add', :title => 'Neue Aufgabe hinzufügen' %>
+  </aside>
+  <%= render 'projectlist' %>
+<% end %>

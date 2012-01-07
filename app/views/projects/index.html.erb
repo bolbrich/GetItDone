@@ -1,0 +1,29 @@
+<p class="actions">&raquo; <%= link_to 'neues Projekt / neue LVA erstellen', new_project_path, :class => "create-new" %></p>
+
+<div class="recent-projects">
+<% @projects.each do |project| %>
+  <div id="project-<%= project.id %>" class="project <%= project.kind %>">
+    <h4>
+	  <%= link_to project.title, project %>
+	  <div class="project-actions">
+        <%= link_to 'Projekt löschen', project, confirm: 'Are you sure?', method: :delete, :class => "delete" %>
+        <%= link_to 'Projekt bearbeiten', edit_project_path(project), :class => "edit" %>
+      </div>
+	</h4>
+    <div>
+	  <ul>
+      <% project.to_dos.outstanding.limit(5).each do |to_do| %>
+        <li><a href="/projects/<%= project.id %>/to_dos/<%= to_do.id %>"><%= to_do.title %></a></li>
+      <% end %>
+      </ul>
+      <p>Zeiterfassung gesamt: <strong><%= project.to_dos.sum(:time) %> Stunden</strong></p>
+    </div>		
+  </div>
+<% end %>
+</div>
+
+<% content_for :contentmenu do %>
+   <li><%= link_to 'Dashboard', projects_path, :class => "active" %></li>
+   <li><%= link_to 'Arbeit', work_projects_path %></li>
+   <li><%= link_to 'Studium', study_projects_path %></li>
+<% end %>

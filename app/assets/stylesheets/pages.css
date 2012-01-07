@@ -1,0 +1,64 @@
+/*
+ * Fachspezifische Basisqualifikation Web - QPT2a
+ * Nicole Buchegger (1010601003) & Barbara Huber (1010601010) 
+ * FH Salzburg | MMT-B2010
+ */
+ 
+/*** header ***/
+#header-wrap {
+  height: 200px;
+}
+#header {}
+#logo a {
+  top: 100px;
+  left: 50%;
+  margin-left: -250px;
+  width: 500px;
+  height: 160px;
+  background-image: url('dummy-logo.gif');
+}
+#header-menu {
+  top: 24px;
+  left: 0;
+}
+#header-menu li {
+  margin-left: 0;
+  margin-right: 25px;
+  font-size: 12px;
+}
+#header-menu li a {text-decoration: none;}
+#header-menu li a:hover, #header-menu li a.active {color: #1fe0e0;}
+
+/*** content ***/
+#content-wrap {
+  position: relative;
+  width: 1024px;
+  margin: 110px auto 60px auto;
+}
+#content {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+.infobox {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 276px;
+  height: 160px;
+  float: left;
+  clear: right;
+  margin: 0 35px 50px 0;
+}
+#infobox-3.infobox {margin-right: 0;}
+#more-info {
+  clear: both;
+  border-top: 1px solid #ddd;
+  padding: 30px 50px 0 50px;
+  text-align: center;
+}
+#more-info p {
+  line-height: 1.6em;
+  font-family: Tahoma, Arial, sans-serif;
+}

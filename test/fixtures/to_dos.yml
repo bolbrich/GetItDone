@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Title: MyString
+  Kurzbeschreibung: MyText
+  Details: MyText
+  Deadline: 2011-12-19 15:21:52
+  Zeiterfassung: 1.5
+
+two:
+  Title: MyString
+  Kurzbeschreibung: MyText
+  Details: MyText
+  Deadline: 2011-12-19 15:21:52
+  Zeiterfassung: 1.5

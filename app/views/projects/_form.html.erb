@@ -1,0 +1,31 @@
+<%= form_for([@user, @project]) do |f| %>
+
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :maxlength => 140 %>
+  </p>
+  <p>
+    <%= f.radio_button :kind, 'work' %> <label>Arbeit - Projekt</label><br />
+	<%= f.radio_button :kind, 'study' %> <label>Studium - LVA</label>
+  </p>
+  <%= f.hidden_field :user_id %>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

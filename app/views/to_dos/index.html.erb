@@ -1,0 +1,31 @@
+<h1>Listing to_dos</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Kurzbeschreibung</th>
+    <th>Details</th>
+    <th>Deadline</th>
+    <th>Zeiterfassung</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @to_dos.each do |to_do| %>
+  <tr>
+    <td><%= to_do.title %></td>
+    <td><%= to_do.short_description %></td>
+    <td><%= to_do.details %></td>
+    <td><%= to_do.deadline %></td>
+    <td><%= to_do.time %></td>
+    <td><%= link_to 'Show', to_do %></td>
+    <td><%= link_to 'Edit', edit_to_do_path(to_do) %></td>
+    <td><%= link_to 'Destroy', to_do_path(@to_do), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Back to Project', projects_path %>

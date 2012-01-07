@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GetItDone | <%= @title %></title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+<%= stylesheet_link_tag "reset", :media => "screen" %>
+<%= stylesheet_link_tag "style", :media => "screen" %>
+<%= controller_stylesheet %>
+<% if content_for?(:stylesheet) %>
+<%= yield :stylesheet %>
+<% end %>
+
+<%= javascript_include_tag "script" %>
+
+<%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="wrap">
+  <header id="header-wrap">
+    <hgroup id="header">
+      <h3 id="logo"><a href="">GetItDone</a></h3>
+	  <% if current_user %>
+	  <div id="avatar">
+	    <%= gravatar_for current_user %>
+	  </div>
+	  <% end %>
+	  <ul id="header-menu">
+	  <% if current_user %>
+        <li>Hallo <%= current_user.first_name %>!</li>
+		<li><%= link_to 'Dashboard', projects_path %></li>
+		<li><%= link_to 'Profil', user_path(current_user) %></li>
+        <li><%= link_to 'Log out', log_out_path %></li>
+      <% else %>
+	    <li><%= link_to 'Home', root_path %></li>
+		<li><%= link_to 'About', about_path %></li>
+        <li><%= link_to "Login", log_in_path %>/<%= link_to "Register", sign_up_path %></li>
+      <% end %>
+	  </ul>
+	  <% if content_for?(:headertitle) %>
+	    <h1 id="header-title"><%= yield :headertitle %></h1>
+	  <% end %>
+    </hgroup>
+  </header>
+
+  <section id="content-wrap">
+    <% if content_for?(:contentmenu) %>
+      <ul id="content-menu-top">
+	    <%= yield :contentmenu %>
+      </ul>
+    <% end %>
+    <div id="content" class="<%= content_for?(:sidebar) ? 'narrow' : 'wide' %>">
+      <%= yield %>
+    </div>
+	<% if content_for?(:sidebar) %>
+      <div id="sidebar">
+	    <aside class="actions">
+	      <%= link_to 'Dashboard', projects_path, :class => 'dashboard' %>
+	    <%= yield :sidebar %>
+      </div>
+    <% end %>
+  </section>
+
+  <footer id="footer">
+    <p>&copy; by Nicole Buchegger &amp; Barbara Huber | FH Salzburg 2011 <span><a href="mailto:support@getitdone.com">support@getitdone.com</a> <%= link_to "Impressum", imprint_path %></span></p>
+  </footer>
+</div>
+
+</body>
+</html>

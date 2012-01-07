@@ -1,0 +1,25 @@
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<p><%= @user.user_name %><br />
+<%= @user.email %></p>
+
+<%= gravatar_for @user, :size => 200 %>
+
+<p>Du hast momentan <%= @user.projects.work.count %> Projekte und <%= @user.projects.study.count %> Lehrveranstaltungen.</p>
+
+
+<% content_for :headertitle do %>
+   <%= @user.user_name %>
+<% end %>
+
+<% content_for :contentmenu do %>
+   <li><%= link_to 'Dashboard', projects_path %></li>
+   <li><%= link_to 'Arbeit', work_projects_path %></li>
+   <li><%= link_to 'Studium', study_projects_path %></li>
+<% end %>
+
+<% content_for :sidebar do %>
+    <%= link_to 'Profil bearbeiten', edit_user_path(@user) %>
+    <%= link_to 'Projekt/LVA hinzufügen', new_project_path(@project) %>
+  </aside>
+  <%= render 'projects/projectlist' %>
+<% end %>

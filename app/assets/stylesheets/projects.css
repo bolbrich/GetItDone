@@ -1,0 +1,149 @@
+/*** dashboard ***/
+.actions {
+  float: right;
+  clear: both;
+  margin-bottom: 20px;
+}
+.actions.bottom {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.actions a {color: #262323;}
+.project {
+  width: 300px;
+  float: left;
+  clear: right;
+  margin: 0 31px 31px 0;
+}
+.project:nth-child(3n+3) {margin-right: 0;}
+.project:nth-child(4n+4) {clear: left;}
+.project div {
+  font-family: Tahoma, Arial, sans-serif;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-top: 0;
+}
+.project h4 {
+  position: relative;
+  padding: 10px;
+  font-size: 12px;
+}
+.project h4 a {
+  color: #fff;
+  text-decoration: none;
+}
+.project-actions {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 2px;
+  opacity: 0;
+}
+.project-actions:hover {opacity: 1;}
+.project-actions a {
+  background: url('icons.png') 0 0 no-repeat;
+  background-color: #fff;
+  width: 16px;
+  height: 16px;
+  float: right;
+  margin-left: 5px;
+}
+.project-actions a.add{background-position: -32px 0;}
+.project-actions a.edit{background-position: 0 0;}
+.project-actions a.delete{background-position: -16px 0;}
+
+.project.work h4 {
+  border: 1px solid #7ea82b;
+  background-color: #8fbf30;
+  background: -moz-linear-gradient(top, #8fbf30, #7ea82b);
+  background: -webkit-linear-gradient(top, #8fbf30, #7ea82b);
+  background: -o-linear-gradient(top, #8fbf30, #7ea82b);
+  background: -ms-linear-gradient(top, #8fbf30, #7ea82b);
+  background: linear-gradient(top, #8fbf30, #7ea82b);
+}
+.project.study h4 {
+  border: 1px solid #820849;
+  background-color: #b10c64;
+  background: -moz-linear-gradient(top, #b10c64, #820849);
+  background: -webkit-linear-gradient(top, #b10c64, #820849);
+  background: -o-linear-gradient(top, #b10c64, #820849);
+  background: -ms-linear-gradient(top, #b10c64, #820849);
+  background: linear-gradient(top, #b10c64, #820849);
+}
+.project ul, .project p {padding: 10px;}
+.project li, .project-todos li {
+  background: url('li.gif') 0 3px no-repeat;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  line-height: 1.3em;
+}
+.project li a {
+  text-decoration: none;
+  color: #262323;
+}
+.project li a:hover {
+  color: #00abb8;
+}
+.project p {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #f1f1f1;
+}
+
+/*** work & study overview ***/
+.overview {clear: right;}
+.overview-work a {color: #7ea82b;}
+.overview-study a {color: #820849;}
+.overview li {
+  float: left;
+  width: 465px;
+  margin-right: 34px;
+  margin-bottom: 20px;
+}
+.overview li:nth-child(2n+2) {margin-right: 0;}
+.overview h4 {
+  font-size: 14px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+}
+.overview h4 a {
+  text-decoration: none;
+}
+.overview p {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.5em;
+  margin-bottom: 10px;
+}
+.overview .time {color: #7e7e7e;}
+
+/*** detail ***/
+.project-description, .project-todos li {font-family: Tahoma, Arial, sans-serif;}
+.project-description {
+  float: left;
+  width: 40%;
+  min-height: 200px;
+  line-height: 1.6em;
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+  margin-right: 20px;
+}
+.project-todo, .project-todos {
+	float: left; 
+	width: 50%;
+}
+.project-todo {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.project-todos li a {
+  display: block;
+  text-decoration: none;
+  color: #7e7e7e;
+}
+.project-todos li a:hover {
+  color: #262323;
+}
